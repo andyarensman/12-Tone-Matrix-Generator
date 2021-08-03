@@ -1,6 +1,6 @@
 # React: 12-Tone Matrix Generator
 
-UPDATE IN PROGRESS 8/3/21
+UPDATE IN PROGRESS 8/3/21 - Working on Refactoring the code in this branch before merging
 
 This React app is made for music theory or composition students studying 12-tone music. The user enters the tone row and is shown every possible form the row can take as well as the intervals for the prime row. You can read more about 12-tone music below: [What is 12-Tone Music?](#what-is-12\-tone-music)
 
