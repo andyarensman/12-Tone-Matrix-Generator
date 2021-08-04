@@ -1,9 +1,13 @@
 import './App.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { LabelRows } from './rows/LabelRows'
+import { RowOne } from './rows/RowOne'
+import { OtherRows } from './rows/OtherRows'
 
 const MatrixSolver = require('../src/controllers/matrix-solver.js')
 var solver = new MatrixSolver();
+
 
 
 
@@ -249,6 +253,7 @@ class TwelveToneMatrix extends React.Component {
       }
     }
 
+
   render() {
     //any styling
     const backgroundStyle = {
@@ -258,11 +263,8 @@ class TwelveToneMatrix extends React.Component {
     const containerStyle = {
       margin: 'auto',
       width: '650px',
-
     }
-    const buttonContainer = {
 
-    }
     const gridCSS = {
       display: 'grid',
       justifyContent: 'center',
@@ -288,18 +290,13 @@ class TwelveToneMatrix extends React.Component {
       textIndent: "55px"
     }
 
-    const tableStyle = {
-
-    }
-
-
 
     return(
       <div style={backgroundStyle}><div style={containerStyle}>
         <h1>12-Tone Matrix Generator</h1>
         <div id="note-selector">
           <h3>Select Row Order</h3>
-          <div style={buttonContainer}><div id="buttons" style={gridCSS}>
+          <div id="buttons" style={gridCSS}>
             <button id="c-button" value = "0" disabled={this.state.disabledC} onClick={this.noteInput}>C</button>
             <button id="db-button" value = "1" disabled={this.state.disabledDb} onClick={this.noteInput}>Db</button>
             <button id="d-button" value = "2" disabled={this.state.disabledD} onClick={this.noteInput}>D</button>
@@ -316,248 +313,28 @@ class TwelveToneMatrix extends React.Component {
             <button id="backspace-button" value = "backspace" style={backspaceButton} disabled={!this.state.userToneRow.length} onClick={this.backspace}>Backspace</button>
             <button id="clear-button" value = "clear" style={clearButton} onClick={this.clearInput}>Clear</button>
             <button id="enter-button" value = "enter" style={enterButton} disabled={this.state.userToneRow.length !== 12} onClick={this.calculateMatrix}>Enter</button>
-            </div></div>
+          </div>
         </div>
         <div id="matrix">
           <h3>Your Matrix</h3>
-          <table style={tableStyle}>
-            <tr id="header-row">
-              <td></td>
-              <th>I0</th>
-              <th>{this.state.labelNumbersX.length ? "I" + this.state.labelNumbersX[1]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "I" + this.state.labelNumbersX[2]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "I" + this.state.labelNumbersX[3]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "I" + this.state.labelNumbersX[4]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "I" + this.state.labelNumbersX[5]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "I" + this.state.labelNumbersX[6]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "I" + this.state.labelNumbersX[7]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "I" + this.state.labelNumbersX[8]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "I" + this.state.labelNumbersX[9]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "I" + this.state.labelNumbersX[10]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "I" + this.state.labelNumbersX[11]:""}</th>
-              <td></td>
-            </tr>
+          <table>
+            <LabelRows labelNumbersX={this.state.labelNumbersX} name="I"/>
 
-            <tr id="row-1">
-              <th>P0</th>
-              <td>{solver.numberToName(this.state.userToneRow)[0]}</td>
-              <td>{solver.numberToName(this.state.userToneRow)[1]}</td>
-              <td>{solver.numberToName(this.state.userToneRow)[2]}</td>
-              <td>{solver.numberToName(this.state.userToneRow)[3]}</td>
-              <td>{solver.numberToName(this.state.userToneRow)[4]}</td>
-              <td>{solver.numberToName(this.state.userToneRow)[5]}</td>
-              <td>{solver.numberToName(this.state.userToneRow)[6]}</td>
-              <td>{solver.numberToName(this.state.userToneRow)[7]}</td>
-              <td>{solver.numberToName(this.state.userToneRow)[8]}</td>
-              <td>{solver.numberToName(this.state.userToneRow)[9]}</td>
-              <td>{solver.numberToName(this.state.userToneRow)[10]}</td>
-              <td>{solver.numberToName(this.state.userToneRow)[11]}</td>
-              <th>R0</th>
-            </tr>
+            <RowOne userToneRow={this.state.userToneRow} />
+            <OtherRows userToneRow={this.state.userToneRow} name="row-2" rowIndex={1} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
+            <OtherRows userToneRow={this.state.userToneRow} name="row-3" rowIndex={2} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
+            <OtherRows userToneRow={this.state.userToneRow} name="row-4" rowIndex={3} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
+            <OtherRows userToneRow={this.state.userToneRow} name="row-5" rowIndex={4} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
+            <OtherRows userToneRow={this.state.userToneRow} name="row-6" rowIndex={5} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
+            <OtherRows userToneRow={this.state.userToneRow} name="row-7" rowIndex={6} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
+            <OtherRows userToneRow={this.state.userToneRow} name="row-8" rowIndex={7} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
+            <OtherRows userToneRow={this.state.userToneRow} name="row-9" rowIndex={8} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
+            <OtherRows userToneRow={this.state.userToneRow} name="row-10" rowIndex={9} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
+            <OtherRows userToneRow={this.state.userToneRow} name="row-11" rowIndex={10} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
+            <OtherRows userToneRow={this.state.userToneRow} name="row-12" rowIndex={11} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
 
-            <tr id="row-2">
-              <th>{this.state.labelNumbersY.length ? "P" + this.state.labelNumbersY[1]:""}</th>
-              <td>{solver.numberToName(this.state.invertedToneRow)[1]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[1], this.state.toneRowIntervals))[1]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[1], this.state.toneRowIntervals))[2]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[1], this.state.toneRowIntervals))[3]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[1], this.state.toneRowIntervals))[4]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[1], this.state.toneRowIntervals))[5]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[1], this.state.toneRowIntervals))[6]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[1], this.state.toneRowIntervals))[7]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[1], this.state.toneRowIntervals))[8]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[1], this.state.toneRowIntervals))[9]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[1], this.state.toneRowIntervals))[10]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[1], this.state.toneRowIntervals))[11]}</td>
-              <th>{this.state.labelNumbersY.length ? "R" + this.state.labelNumbersY[1]:""}</th>
-            </tr>
+            <LabelRows labelNumbersX={this.state.labelNumbersX} name="RI"/>
 
-            <tr id="row-3">
-              <th>{this.state.labelNumbersY.length ? "P" + this.state.labelNumbersY[2]:""}</th>
-              <td>{solver.numberToName(this.state.invertedToneRow)[2]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[2], this.state.toneRowIntervals))[1]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[2], this.state.toneRowIntervals))[2]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[2], this.state.toneRowIntervals))[3]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[2], this.state.toneRowIntervals))[4]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[2], this.state.toneRowIntervals))[5]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[2], this.state.toneRowIntervals))[6]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[2], this.state.toneRowIntervals))[7]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[2], this.state.toneRowIntervals))[8]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[2], this.state.toneRowIntervals))[9]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[2], this.state.toneRowIntervals))[10]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[2], this.state.toneRowIntervals))[11]}</td>
-              <th>{this.state.labelNumbersY.length ? "R" + this.state.labelNumbersY[2]:""}</th>
-            </tr>
-
-            <tr id="row-4">
-              <th>{this.state.labelNumbersY.length ? "P" + this.state.labelNumbersY[3]:""}</th>
-              <td>{solver.numberToName(this.state.invertedToneRow)[3]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[3], this.state.toneRowIntervals))[1]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[3], this.state.toneRowIntervals))[2]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[3], this.state.toneRowIntervals))[3]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[3], this.state.toneRowIntervals))[4]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[3], this.state.toneRowIntervals))[5]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[3], this.state.toneRowIntervals))[6]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[3], this.state.toneRowIntervals))[7]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[3], this.state.toneRowIntervals))[8]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[3], this.state.toneRowIntervals))[9]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[3], this.state.toneRowIntervals))[10]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[3], this.state.toneRowIntervals))[11]}</td>
-              <th>{this.state.labelNumbersY.length ? "R" + this.state.labelNumbersY[3]:""}</th>
-            </tr>
-
-            <tr id="row-5">
-              <th>{this.state.labelNumbersY.length ? "P" + this.state.labelNumbersY[4]:""}</th>
-              <td>{solver.numberToName(this.state.invertedToneRow)[4]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[4], this.state.toneRowIntervals))[1]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[4], this.state.toneRowIntervals))[2]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[4], this.state.toneRowIntervals))[3]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[4], this.state.toneRowIntervals))[4]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[4], this.state.toneRowIntervals))[5]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[4], this.state.toneRowIntervals))[6]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[4], this.state.toneRowIntervals))[7]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[4], this.state.toneRowIntervals))[8]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[4], this.state.toneRowIntervals))[9]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[4], this.state.toneRowIntervals))[10]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[4], this.state.toneRowIntervals))[11]}</td>
-              <th>{this.state.labelNumbersY.length ? "R" + this.state.labelNumbersY[4]:""}</th>
-            </tr>
-
-            <tr id="row-6">
-              <th>{this.state.labelNumbersY.length ? "P" + this.state.labelNumbersY[5]:""}</th>
-              <td>{solver.numberToName(this.state.invertedToneRow)[5]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[5], this.state.toneRowIntervals))[1]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[5], this.state.toneRowIntervals))[2]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[5], this.state.toneRowIntervals))[3]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[5], this.state.toneRowIntervals))[4]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[5], this.state.toneRowIntervals))[5]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[5], this.state.toneRowIntervals))[6]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[5], this.state.toneRowIntervals))[7]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[5], this.state.toneRowIntervals))[8]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[5], this.state.toneRowIntervals))[9]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[5], this.state.toneRowIntervals))[10]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[5], this.state.toneRowIntervals))[11]}</td>
-              <th>{this.state.labelNumbersY.length ? "R" + this.state.labelNumbersY[5]:""}</th>
-            </tr>
-
-            <tr id="row-7">
-              <th>{this.state.labelNumbersY.length ? "P" + this.state.labelNumbersY[6]:""}</th>
-              <td>{solver.numberToName(this.state.invertedToneRow)[6]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[6], this.state.toneRowIntervals))[1]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[6], this.state.toneRowIntervals))[2]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[6], this.state.toneRowIntervals))[3]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[6], this.state.toneRowIntervals))[4]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[6], this.state.toneRowIntervals))[5]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[6], this.state.toneRowIntervals))[6]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[6], this.state.toneRowIntervals))[7]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[6], this.state.toneRowIntervals))[8]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[6], this.state.toneRowIntervals))[9]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[6], this.state.toneRowIntervals))[10]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[6], this.state.toneRowIntervals))[11]}</td>
-              <th>{this.state.labelNumbersY.length ? "R" + this.state.labelNumbersY[6]:""}</th>
-            </tr>
-
-            <tr id="row-8">
-              <th>{this.state.labelNumbersY.length ? "P" + this.state.labelNumbersY[7]:""}</th>
-              <td>{solver.numberToName(this.state.invertedToneRow)[7]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[7], this.state.toneRowIntervals))[1]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[7], this.state.toneRowIntervals))[2]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[7], this.state.toneRowIntervals))[3]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[7], this.state.toneRowIntervals))[4]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[7], this.state.toneRowIntervals))[5]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[7], this.state.toneRowIntervals))[6]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[7], this.state.toneRowIntervals))[7]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[7], this.state.toneRowIntervals))[8]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[7], this.state.toneRowIntervals))[9]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[7], this.state.toneRowIntervals))[10]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[7], this.state.toneRowIntervals))[11]}</td>
-              <th>{this.state.labelNumbersY.length ? "R" + this.state.labelNumbersY[7]:""}</th>
-            </tr>
-
-            <tr id="row-9">
-              <th>{this.state.labelNumbersY.length ? "P" + this.state.labelNumbersY[8]:""}</th>
-              <td>{solver.numberToName(this.state.invertedToneRow)[8]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[8], this.state.toneRowIntervals))[1]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[8], this.state.toneRowIntervals))[2]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[8], this.state.toneRowIntervals))[3]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[8], this.state.toneRowIntervals))[4]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[8], this.state.toneRowIntervals))[5]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[8], this.state.toneRowIntervals))[6]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[8], this.state.toneRowIntervals))[7]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[8], this.state.toneRowIntervals))[8]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[8], this.state.toneRowIntervals))[9]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[8], this.state.toneRowIntervals))[10]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[8], this.state.toneRowIntervals))[11]}</td>
-              <th>{this.state.labelNumbersY.length ? "R" + this.state.labelNumbersY[8]:""}</th>
-            </tr>
-
-            <tr id="row-10">
-              <th>{this.state.labelNumbersY.length ? "P" + this.state.labelNumbersY[9]:""}</th>
-              <td>{solver.numberToName(this.state.invertedToneRow)[9]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[9], this.state.toneRowIntervals))[1]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[9], this.state.toneRowIntervals))[2]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[9], this.state.toneRowIntervals))[3]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[9], this.state.toneRowIntervals))[4]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[9], this.state.toneRowIntervals))[5]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[9], this.state.toneRowIntervals))[6]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[9], this.state.toneRowIntervals))[7]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[9], this.state.toneRowIntervals))[8]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[9], this.state.toneRowIntervals))[9]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[9], this.state.toneRowIntervals))[10]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[9], this.state.toneRowIntervals))[11]}</td>
-              <th>{this.state.labelNumbersY.length ? "R" + this.state.labelNumbersY[9]:""}</th>
-            </tr>
-
-            <tr id="row-11">
-              <th>{this.state.labelNumbersY.length ? "P" + this.state.labelNumbersY[10]:""}</th>
-              <td>{solver.numberToName(this.state.invertedToneRow)[10]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[10], this.state.toneRowIntervals))[1]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[10], this.state.toneRowIntervals))[2]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[10], this.state.toneRowIntervals))[3]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[10], this.state.toneRowIntervals))[4]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[10], this.state.toneRowIntervals))[5]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[10], this.state.toneRowIntervals))[6]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[10], this.state.toneRowIntervals))[7]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[10], this.state.toneRowIntervals))[8]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[10], this.state.toneRowIntervals))[9]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[10], this.state.toneRowIntervals))[10]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[10], this.state.toneRowIntervals))[11]}</td>
-              <th>{this.state.labelNumbersY.length ? "R" + this.state.labelNumbersY[10]:""}</th>
-            </tr>
-
-            <tr id="row-12">
-              <th>{this.state.labelNumbersY.length ? "P" + this.state.labelNumbersY[11]:""}</th>
-              <td>{solver.numberToName(this.state.invertedToneRow)[11]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[11], this.state.toneRowIntervals))[1]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[11], this.state.toneRowIntervals))[2]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[11], this.state.toneRowIntervals))[3]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[11], this.state.toneRowIntervals))[4]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[11], this.state.toneRowIntervals))[5]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[11], this.state.toneRowIntervals))[6]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[11], this.state.toneRowIntervals))[7]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[11], this.state.toneRowIntervals))[8]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[11], this.state.toneRowIntervals))[9]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[11], this.state.toneRowIntervals))[10]}</td>
-              <td>{solver.numberToName(solver.generateRow(this.state.invertedToneRow[11], this.state.toneRowIntervals))[11]}</td>
-              <th>{this.state.labelNumbersY.length ? "R" + this.state.labelNumbersY[11]:""}</th>
-            </tr>
-
-            <tr id="footer-row">
-              <td></td>
-              <th>RI0</th>
-              <th>{this.state.labelNumbersX.length ? "RI" + this.state.labelNumbersX[1]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "RI" + this.state.labelNumbersX[2]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "RI" + this.state.labelNumbersX[3]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "RI" + this.state.labelNumbersX[4]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "RI" + this.state.labelNumbersX[5]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "RI" + this.state.labelNumbersX[6]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "RI" + this.state.labelNumbersX[7]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "RI" + this.state.labelNumbersX[8]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "RI" + this.state.labelNumbersX[9]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "RI" + this.state.labelNumbersX[10]:""}</th>
-              <th>{this.state.labelNumbersX.length ? "RI" + this.state.labelNumbersX[11]:""}</th>
-              <td></td>
-            </tr>
           </table>
           <h3>Your Intervals</h3>
           <div dangerouslySetInnerHTML={this.createMarkup()} style={indent}></div>
