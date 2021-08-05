@@ -16,3 +16,38 @@ table {
   margin-left: auto;
   margin-right: auto;
 }
+
+.BackgroundStyle {
+  padding: 10px 0;
+}
+
+.ContainerStyle {
+  margin: auto;
+  width: 650px;
+}
+
+
+.GridCSS {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+  grid-template-rows: 40px 30px;
+  grid-column-gap: 4px;
+  grid-row-gap: 10px;
+};
+
+.ClearButton {
+  grid-column: 9 / 11;
+}
+
+.BackspaceButton {
+  grid-column: 7 / 9;
+}
+
+.EnterButton {
+  grid-column: 11 / 13;
+}
+
+.Indent {
+  text-indent: 60px;
+}

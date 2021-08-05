@@ -6,17 +6,9 @@ export const OtherRows = ({userToneRow, name, rowIndex, labelNumbersY, invertedT
     <tr id={name}>
       <th>{labelNumbersY.length ? "P" + labelNumbersY[rowIndex]:""}</th>
       <td>{solver.numberToName(invertedToneRow)[rowIndex]}</td>
-      <td>{solver.numberToName(solver.generateRow(invertedToneRow[rowIndex], toneRowIntervals))[1]}</td>
-      <td>{solver.numberToName(solver.generateRow(invertedToneRow[rowIndex], toneRowIntervals))[2]}</td>
-      <td>{solver.numberToName(solver.generateRow(invertedToneRow[rowIndex], toneRowIntervals))[3]}</td>
-      <td>{solver.numberToName(solver.generateRow(invertedToneRow[rowIndex], toneRowIntervals))[4]}</td>
-      <td>{solver.numberToName(solver.generateRow(invertedToneRow[rowIndex], toneRowIntervals))[5]}</td>
-      <td>{solver.numberToName(solver.generateRow(invertedToneRow[rowIndex], toneRowIntervals))[6]}</td>
-      <td>{solver.numberToName(solver.generateRow(invertedToneRow[rowIndex], toneRowIntervals))[7]}</td>
-      <td>{solver.numberToName(solver.generateRow(invertedToneRow[rowIndex], toneRowIntervals))[8]}</td>
-      <td>{solver.numberToName(solver.generateRow(invertedToneRow[rowIndex], toneRowIntervals))[9]}</td>
-      <td>{solver.numberToName(solver.generateRow(invertedToneRow[rowIndex], toneRowIntervals))[10]}</td>
-      <td>{solver.numberToName(solver.generateRow(invertedToneRow[rowIndex], toneRowIntervals))[11]}</td>
+      {[...Array(11)].map((x, i) =>
+        <td key={i}>{solver.numberToName(solver.generateRow(invertedToneRow[rowIndex], toneRowIntervals))[i + 1]}</td>
+      )}
       <th>{labelNumbersY.length ? "R" + labelNumbersY[rowIndex]:""}</th>
     </tr>
   );

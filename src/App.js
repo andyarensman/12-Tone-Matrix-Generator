@@ -255,48 +255,13 @@ class TwelveToneMatrix extends React.Component {
 
 
   render() {
-    //any styling
-    const backgroundStyle = {
-      padding: '10px 0'
-    }
-
-    const containerStyle = {
-      margin: 'auto',
-      width: '650px',
-    }
-
-    const gridCSS = {
-      display: 'grid',
-      justifyContent: 'center',
-      gridTemplateColumns: '40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px',
-      gridTemplateRows: '40px 30px',
-      gridColumnGap: "4px",
-      gridRowGap: "10px"
-    };
-
-    const clearButton = {
-      gridColumn: "9 / 11"
-    }
-
-    const backspaceButton = {
-      gridColumn: "7 / 9"
-    }
-
-    const enterButton = {
-      gridColumn: "11 / 13"
-    }
-
-    const indent = {
-      textIndent: "55px"
-    }
-
 
     return(
-      <div style={backgroundStyle}><div style={containerStyle}>
+      <div className="BackgroundStyle"><div className="ContainerStyle">
         <h1>12-Tone Matrix Generator</h1>
         <div id="note-selector">
           <h3>Select Row Order</h3>
-          <div id="buttons" style={gridCSS}>
+          <div id="buttons" className="GridCSS">
             <button id="c-button" value = "0" disabled={this.state.disabledC} onClick={this.noteInput}>C</button>
             <button id="db-button" value = "1" disabled={this.state.disabledDb} onClick={this.noteInput}>Db</button>
             <button id="d-button" value = "2" disabled={this.state.disabledD} onClick={this.noteInput}>D</button>
@@ -310,9 +275,9 @@ class TwelveToneMatrix extends React.Component {
             <button id="bb-button" value = "10" disabled={this.state.disabledBb} onClick={this.noteInput}>Bb</button>
             <button id="b-button" value = "11" disabled={this.state.disabledB} onClick={this.noteInput}>B</button>
 
-            <button id="backspace-button" value = "backspace" style={backspaceButton} disabled={!this.state.userToneRow.length} onClick={this.backspace}>Backspace</button>
-            <button id="clear-button" value = "clear" style={clearButton} onClick={this.clearInput}>Clear</button>
-            <button id="enter-button" value = "enter" style={enterButton} disabled={this.state.userToneRow.length !== 12} onClick={this.calculateMatrix}>Enter</button>
+            <button id="backspace-button" value = "backspace" className="BackspaceButton" disabled={!this.state.userToneRow.length} onClick={this.backspace}>Backspace</button>
+            <button id="clear-button" value = "clear" className="ClearButton" onClick={this.clearInput}>Clear</button>
+            <button id="enter-button" value = "enter" className="EnterButton" disabled={this.state.userToneRow.length !== 12} onClick={this.calculateMatrix}>Enter</button>
           </div>
         </div>
         <div id="matrix">
@@ -321,23 +286,16 @@ class TwelveToneMatrix extends React.Component {
             <LabelRows labelNumbersX={this.state.labelNumbersX} name="I"/>
 
             <RowOne userToneRow={this.state.userToneRow} />
-            <OtherRows userToneRow={this.state.userToneRow} name="row-2" rowIndex={1} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
-            <OtherRows userToneRow={this.state.userToneRow} name="row-3" rowIndex={2} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
-            <OtherRows userToneRow={this.state.userToneRow} name="row-4" rowIndex={3} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
-            <OtherRows userToneRow={this.state.userToneRow} name="row-5" rowIndex={4} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
-            <OtherRows userToneRow={this.state.userToneRow} name="row-6" rowIndex={5} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
-            <OtherRows userToneRow={this.state.userToneRow} name="row-7" rowIndex={6} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
-            <OtherRows userToneRow={this.state.userToneRow} name="row-8" rowIndex={7} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
-            <OtherRows userToneRow={this.state.userToneRow} name="row-9" rowIndex={8} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
-            <OtherRows userToneRow={this.state.userToneRow} name="row-10" rowIndex={9} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
-            <OtherRows userToneRow={this.state.userToneRow} name="row-11" rowIndex={10} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
-            <OtherRows userToneRow={this.state.userToneRow} name="row-12" rowIndex={11} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
+
+            {[...Array(11)].map((x, i) =>
+              <OtherRows key={i} userToneRow={this.state.userToneRow} name={"row-" + i} rowIndex={i + 1} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
+            )}
 
             <LabelRows labelNumbersX={this.state.labelNumbersX} name="RI"/>
 
           </table>
           <h3>Your Intervals</h3>
-          <div dangerouslySetInnerHTML={this.createMarkup()} style={indent}></div>
+          <div dangerouslySetInnerHTML={this.createMarkup()} className="Indent"></div>
         </div>
         </div>
       </div>
