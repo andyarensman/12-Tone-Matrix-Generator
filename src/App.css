@@ -26,7 +26,6 @@ table {
   width: 650px;
 }
 
-
 .GridCSS {
   display: grid;
   justify-content: center;
@@ -34,14 +33,14 @@ table {
   grid-template-rows: 40px 30px;
   grid-column-gap: 4px;
   grid-row-gap: 10px;
-};
-
-.ClearButton {
-  grid-column: 9 / 11;
 }
 
 .BackspaceButton {
   grid-column: 7 / 9;
+}
+
+.ClearButton {
+  grid-column: 9 / 11;
 }
 
 .EnterButton {

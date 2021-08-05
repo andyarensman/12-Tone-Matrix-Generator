@@ -1,14 +1,12 @@
 import './App.css';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { LabelRows } from './rows/LabelRows'
-import { RowOne } from './rows/RowOne'
-import { OtherRows } from './rows/OtherRows'
+
+import { Matrix } from './display/Matrix'
+import { YourIntervals } from './display/YourIntervals'
+import { NoteSelector } from './display/NoteSelector'
 
 const MatrixSolver = require('../src/controllers/matrix-solver.js')
 var solver = new MatrixSolver();
-
-
 
 
 class TwelveToneMatrix extends React.Component {
@@ -34,7 +32,7 @@ class TwelveToneMatrix extends React.Component {
       disabledBb: false,
       disabledB: false
     }
-    //bind stuff here
+
     this.noteInput = this.noteInput.bind(this)
     this.backspace = this.backspace.bind(this)
     this.clearInput = this.clearInput.bind(this)
@@ -44,7 +42,7 @@ class TwelveToneMatrix extends React.Component {
     this.createMarkup = this.createMarkup.bind(this)
 
   }
-  //formulas here
+
   noteInput(event) {
     const val = event.target.value
     this.disableButton(val)
@@ -255,48 +253,40 @@ class TwelveToneMatrix extends React.Component {
 
 
   render() {
-
     return(
-      <div className="BackgroundStyle"><div className="ContainerStyle">
-        <h1>12-Tone Matrix Generator</h1>
-        <div id="note-selector">
-          <h3>Select Row Order</h3>
-          <div id="buttons" className="GridCSS">
-            <button id="c-button" value = "0" disabled={this.state.disabledC} onClick={this.noteInput}>C</button>
-            <button id="db-button" value = "1" disabled={this.state.disabledDb} onClick={this.noteInput}>Db</button>
-            <button id="d-button" value = "2" disabled={this.state.disabledD} onClick={this.noteInput}>D</button>
-            <button id="eb-button" value = "3" disabled={this.state.disabledEb} onClick={this.noteInput}>Eb</button>
-            <button id="e-button" value = "4" disabled={this.state.disabledE} onClick={this.noteInput}>E</button>
-            <button id="f-button" value = "5" disabled={this.state.disabledF} onClick={this.noteInput}>F</button>
-            <button id="gb-button" value = "6" disabled={this.state.disabledGb} onClick={this.noteInput}>Gb</button>
-            <button id="g-button" value = "7" disabled={this.state.disabledG} onClick={this.noteInput}>G</button>
-            <button id="ab-button" value = "8" disabled={this.state.disabledAb} onClick={this.noteInput}>Ab</button>
-            <button id="a-button" value = "9" disabled={this.state.disabledA} onClick={this.noteInput}>A</button>
-            <button id="bb-button" value = "10" disabled={this.state.disabledBb} onClick={this.noteInput}>Bb</button>
-            <button id="b-button" value = "11" disabled={this.state.disabledB} onClick={this.noteInput}>B</button>
+      <div className="BackgroundStyle">
+        <div className="ContainerStyle">
+          <h1>12-Tone Matrix Generator</h1>
 
-            <button id="backspace-button" value = "backspace" className="BackspaceButton" disabled={!this.state.userToneRow.length} onClick={this.backspace}>Backspace</button>
-            <button id="clear-button" value = "clear" className="ClearButton" onClick={this.clearInput}>Clear</button>
-            <button id="enter-button" value = "enter" className="EnterButton" disabled={this.state.userToneRow.length !== 12} onClick={this.calculateMatrix}>Enter</button>
-          </div>
-        </div>
-        <div id="matrix">
-          <h3>Your Matrix</h3>
-          <table>
-            <LabelRows labelNumbersX={this.state.labelNumbersX} name="I"/>
+          <NoteSelector
+            disabledC={this.state.disabledC}
+            disabledDb={this.state.disabledDb}
+            disabledD={this.state.disabledD}
+            disabledEb={this.state.disabledEb}
+            disabledE={this.state.disabledE}
+            disabledF={this.state.disabledF}
+            disabledGb={this.state.disabledGb}
+            disabledG={this.state.disabledG}
+            disabledAb={this.state.disabledAb}
+            disabledA={this.state.disabledA}
+            disabledBb={this.state.disabledBb}
+            disabledB={this.state.disabledB}
+            noteInput={this.noteInput}
+            userToneRow={this.state.userToneRow}
+            backspace={this.backspace}
+            clearInput={this.clearInput}
+            calculateMatrix={this.calculateMatrix}/>
 
-            <RowOne userToneRow={this.state.userToneRow} />
+          <Matrix
+            labelNumbersX={this.state.labelNumbersX}
+            userToneRow={this.state.userToneRow}
+            labelNumbersY={this.state.labelNumbersY}
+            invertedToneRow={this.state.invertedToneRow}
+            toneRowIntervals={this.state.toneRowIntervals}/>
 
-            {[...Array(11)].map((x, i) =>
-              <OtherRows key={i} userToneRow={this.state.userToneRow} name={"row-" + i} rowIndex={i + 1} labelNumbersY={this.state.labelNumbersY} invertedToneRow={this.state.invertedToneRow} toneRowIntervals={this.state.toneRowIntervals} />
-            )}
+          <YourIntervals
+            createMarkup={this.createMarkup}/>
 
-            <LabelRows labelNumbersX={this.state.labelNumbersX} name="RI"/>
-
-          </table>
-          <h3>Your Intervals</h3>
-          <div dangerouslySetInnerHTML={this.createMarkup()} className="Indent"></div>
-        </div>
         </div>
       </div>
     )
