@@ -5,7 +5,7 @@ import { Matrix } from './display/Matrix'
 import { YourIntervals } from './display/YourIntervals'
 import { NoteSelector } from './display/NoteSelector'
 
-const MatrixSolver = require('../src/controllers/matrix-solver.js')
+import { MatrixSolver } from './controllers/matrix-solver.js'
 var solver = new MatrixSolver();
 
 

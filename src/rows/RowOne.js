@@ -1,4 +1,4 @@
-const MatrixSolver = require('../../src/controllers/matrix-solver.js')
+import { MatrixSolver } from '../../src/controllers/matrix-solver.js'
 var solver = new MatrixSolver();
 
 export const RowOne = ({userToneRow}) => {

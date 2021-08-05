@@ -1,7 +1,7 @@
 var noteArr = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
 var intervalNames = ["m2", "M2", "m3", "M3", "P4", "TT", "P5", "m6", "M6", "m7", "M7"];
 
-class MatrixSolver {
+export class MatrixSolver {
 
   //returns an array, length 11, of the intervals between each note
   findIntervals(inputArr) {
@@ -65,5 +65,3 @@ class MatrixSolver {
     return intNameStr;
   }
 }
-
-module.exports = MatrixSolver
