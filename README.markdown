@@ -2,6 +2,8 @@
 
 [View the App](https://twelve-tone-matrix-generator.herokuapp.com/)
 
+***Update 8/6/21 - Currently working on CSS in another branch***
+
 This React app is made for music theory or composition students studying 12-tone music. The user enters the tone row and is shown every possible form the row can take as well as the intervals for the prime row. You can read more about 12-tone music below: [What is 12-Tone Music?](#what-is-12\-tone-music)
 
 Here you can see an example of the app in use:
