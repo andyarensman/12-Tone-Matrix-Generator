@@ -1,6 +1,9 @@
 import './App.css';
 import React from 'react';
 
+import './fonts/Roboto/Roboto-Thin.ttf';
+import './fonts/Roboto/Roboto-Light.ttf';
+
 import { Matrix } from './display/Matrix'
 import { YourIntervals } from './display/YourIntervals'
 import { NoteSelector } from './display/NoteSelector'
