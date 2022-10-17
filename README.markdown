@@ -1,6 +1,6 @@
 # React: 12-Tone Matrix Generator
 
-[View the App](https://twelve-tone-matrix-generator.herokuapp.com/)
+[View the App](https://12-tone-matrix-generator.vercel.app/)
 
 ***Update 8/6/21 - Currently working on CSS in another branch***
 
