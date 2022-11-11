@@ -2,8 +2,6 @@
 
 [View the App](https://12-tone-matrix-generator.vercel.app/)
 
-***Update 8/6/21 - Currently working on CSS in another branch***
-
 This React app is made for music theory or composition students studying 12-tone music. The user enters the tone row and is shown every possible form the row can take as well as the intervals for the prime row. You can read more about 12-tone music below: [What is 12-Tone Music?](#what-is-12\-tone-music)
 
 Here you can see an example of the app in use:
@@ -12,7 +10,7 @@ Here you can see an example of the app in use:
 
 # Creating the App
 
-This was the first app I ever created and was originally made as a pen on CodePen.io: [https://codepen.io/arensmandy/pen/mdRBXNy](https://codepen.io/arensmandy/pen/mdRBXNy). Since creating the app on CodePen, I have refactored the code to work in a normal code editor.
+This was the first app I ever created and was originally made as a pen on CodePen.io: [https://codepen.io/arensmandy/pen/mdRBXNy](https://codepen.io/arensmandy/pen/mdRBXNy). Since creating the app on CodePen, I have refactored the code to work in a normal code editor and am hosting it on Vercel.
 
 The project was created as a way to practice React while going through the [freeCodeCamp certification](https://www.freecodecamp.org/learn/front-end-libraries/) on front end development libraries. I also used it as a way to practice refactoring and using Git with GitHub.
 
@@ -48,6 +46,3 @@ If you want to read more about serialism, [check out the Wikipedia article here]
 # Tutorials & Guides Used:
 
 - FreeCodeCamp Front End Development Libraries - React: [freeCodeCamp certification](https://www.freecodecamp.org/learn/front-end-libraries/#react)
-
-# License
-[MIT License](https://choosealicense.com/licenses/mit/)
