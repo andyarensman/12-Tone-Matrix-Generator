@@ -16,7 +16,7 @@ The project was created as a way to practice React while going through the [free
 
 In the future I would like to add various playback functions so the user can hear what their tone rows sound like in the various forms. At some point I would also like to add more CSS to make the app more visually appealing. Currently there isn't a way for the user to select the direction of the interval, so this could be another feature added - however, this shouldn't cause any problems for music students and if implemented would slow down the entry process.
 
-In terms of the code, I spent I lot of time refactoring to hopefully make it cleaner to read. I think there is probably a better way to disable the buttons, so I may revisit this later.
+I spent I lot of time refactoring to hopefully make it cleaner to read. I think there is probably a better way to disable the buttons, so I may revisit this later.
 
 # What is 12-Tone Music?
 
@@ -34,10 +34,10 @@ One of the key aspects of the row is the distance between each note - the ***int
 
 - ***Transposing*** the row (same intervals, but starting on a different note)
 - ***Inverting*** the row (same intervals, but in the opposite direction: if it was a major third UP instead you go a major third DOWN)
-- Playing the row backwards (called ***retrograde***)
+- Playing the row backwards (***retrograde***)
 - or any combination of the three
 
-If you enter the example tone row into my app, you will see all possible forms of the prime row. The letters are P(Prime - all the transpositions), I(Inversion), R(Retrograde), and RI(Retrograde-Inversion). The numbers refer to the starting note of P and I and go up stepwise. So in the Schoenberg example above, Bb would be 0, B is 1, C is 2, etc. ***Note: It seems like music theorists will sometimes number the notes differently (sometimes 0 is always C).***
+If you enter the example tone row into my app, you will see all possible forms of the prime row. The letters are P (Prime - all the transpositions), I (Inversion), R (Retrograde), and RI (Retrograde Inversion). The numbers refer to the starting note of P and I and go up stepwise. So in the Schoenberg example above, Bb would be 0, B is 1, C is 2, etc. ***Note: It seems like music theorists will sometimes number the notes differently (sometimes 0 is always C).***
 
 With all of these options of rows to use, the composer is able to create a piece of music. They use as many or as few rows as they like. Sometimes they will use the first few notes of a row to create a chord, then continue the row. Sometimes they will repeat a note in a row before finishing it out. Multiple rows can often happen simultaneously between multiple instruments or one instrument will start a row and another instrument will finish it. With all this going on, it can be quite challenging to find every row when analyzing the music.
 
