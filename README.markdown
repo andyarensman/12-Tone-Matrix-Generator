@@ -14,6 +14,8 @@ This was the first app I ever created and was originally made as a pen on CodePe
 
 The project was created as a way to practice React while going through the [freeCodeCamp certification](https://www.freecodecamp.org/learn/front-end-libraries/) on front end development libraries. I also used it as a way to practice refactoring and using Git with GitHub.
 
+The algorithm to solve the matrix is fairly simple if you understand music theory. Each of the tweleve notes is assigned a number from 0-11. C is 0, C# is 1 ... B is 11. A user's input would look something like this after the conversion: `[0, 4, 5, 8, 9, 2, 3, 6, 7, 11, 10, 1]`. To get the interval bewetween the notes, you just subtract one note's value from the other. The absolute value of this number is then used as an index to grab the name of the inveral from an array. So C(0) to E(4) is a differnce of 4, which is a major third. To tranpose the notes, you simply add the interval to each note's number. So if you wanted to go up by four notes, you would add 4 to each note's number. If a note is above 11, you subtract 12 from it to keep it in the range of 0-11.
+
 In the future I would like to add various playback functions so the user can hear what their tone rows sound like in the various forms. At some point I would also like to add more CSS to make the app more visually appealing. Currently there isn't a way for the user to select the direction of the interval, so this could be another feature added - however, this shouldn't cause any problems for music students and if implemented would slow down the entry process.
 
 I spent I lot of time refactoring to hopefully make it cleaner to read. I think there is probably a better way to disable the buttons, so I may revisit this later.
